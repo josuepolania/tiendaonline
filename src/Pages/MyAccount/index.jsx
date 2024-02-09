@@ -1,5 +1,5 @@
 
-import Layout from "../../componentes/Navbar/Layout"
+import Layout from "../../componentes/Layout"
 
 
 function MyAccount() {
