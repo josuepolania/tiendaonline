@@ -1,9 +1,11 @@
+import Layout from "../../componentes/Navbar/Layout"
+
 function Signin() {
   
     return (
-      <h1 className="bg-red-100">
-        Signin
-      </h1>
+      <Layout>
+        Singnin
+      </Layout>
     )
   }
   

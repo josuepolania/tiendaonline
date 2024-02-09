@@ -1,9 +1,11 @@
+import Layout from "../../componentes/Navbar/Layout"
+
 function MyOrders() {
   
     return (
-      <h1 className="bg-red-100">
-        MyOrders
-      </h1>
+     <Layout>
+      MyOrders
+     </Layout>
     )
   }
   
