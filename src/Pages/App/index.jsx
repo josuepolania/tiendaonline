@@ -1,6 +1,6 @@
 
 import { useRoutes, BrowserRouter } from "react-router-dom"
-import { ShoppingCartProvaider  } from "../../Contex"
+import { ShoppingCartProvaider  } from "../../Context"
 import Home from "../Home/"
 import MyAccount from "../MyAccount/"
 import MyOrder from "../MyOrder/"
