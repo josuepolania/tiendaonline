@@ -93,7 +93,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink>
-                        carrito 0
+                        🛒 0
                     </NavLink>
                 </li>
             </ul>
