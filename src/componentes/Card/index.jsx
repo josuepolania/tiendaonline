@@ -18,7 +18,7 @@ const Card = (data) => {
         Context.setcartProduct([...Context.cartProduct, productData])
         Context.openCheckoutSideMenu()
         Context.closeProductDetail()
-        console.log("CART: ", Context.cartProduct)
+        
     }
 
     return (
