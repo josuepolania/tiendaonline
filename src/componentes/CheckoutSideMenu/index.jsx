@@ -15,6 +15,18 @@ const CheckoutSideMenu = () => {
         Context.setcartProduct(filteredProduct)
     }
 
+    const handleCheckout = () => {
+        const orderToAdd = {
+            data: "01.02.23",
+            product: Context.cartProduct,
+            totalProduct: Context.cartProduct.length,
+            totalPrice: totalPrice(Context.cartProduct)
+        }
+
+        Context.setOrder([...Context.order, orderToAdd])
+        Context.setcartProduct([])
+    }
+
 
 
     return (
@@ -29,7 +41,7 @@ const CheckoutSideMenu = () => {
                 </div>
                
             </div>
-            <div className="px-6 overflow-y-scroll" >
+            <div className="px-6 overflow-y-scroll flex-1" >
             {
                 Context.cartProduct.map(product => (
                     <OrderCard 
@@ -43,11 +55,12 @@ const CheckoutSideMenu = () => {
                 ))
             }
             </div>
-            <div className="px-6">
-                <p className="flex justify-between items-center">
+            <div className="px-6 mb-6">
+                <p className="flex justify-between items-center mb-2">
                     <span className="font-light">total:</span>
                     <span className="font-medium text-2xl">${totalPrice(Context.cartProduct)}</span>
                 </p>
+                <button className="w-full bg-black py-3 text-white rounded-lg " onClick={() => handleCheckout()}>Checkout</button>
             </div>          
         </aside>
     )
