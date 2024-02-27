@@ -1,12 +1,29 @@
+import { useContext } from "react"
+import { Link } from 'react-router-dom'
 import Layout from "../../componentes/Layout"
+import { ShoppingCartContext } from "../../Context"
+import OrdersCard  from "../../componentes/OrdersCard"
 
 function MyOrders() {
-  
-    return (
-     <Layout>
-      MyOrders
-     </Layout>
-    )
-  }
-  
-  export default MyOrders
+
+  const Context = useContext(ShoppingCartContext)
+  console.log(Context)
+  return (
+    <Layout>
+      <div className='flex items-center justify-center relative w-80'>
+        <h1>My Orders</h1>
+      </div>
+      {
+        Context.order.map((order, index) => {
+          <Link key={index} to={`/my-orders/${order.id}`}>
+            <OrdersCard
+              totalPrice={order.totalPrice}
+              totalProducts={order.totalProducts} />
+          </Link>
+        })
+      }
+    </Layout>
+  )
+}
+
+export default MyOrders
