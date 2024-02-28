@@ -16,13 +16,14 @@ function MyOrders() {
       </div>
 
       {
-        Context.order.map((order, index) => {
-          <Link key={index} to={`/my-orders/${order.id}`}>
+        Context.order.map((order, index) => (
+
+          <Link key={index} to={`/my-orders/${index}`}>
             <OrdersCard
               totalPrice={order.totalPrice}
               totalProducts={order.totalProducts} />
           </Link>
-        })
+        ))
       }
     </Layout>
   )
