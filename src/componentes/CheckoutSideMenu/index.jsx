@@ -2,7 +2,6 @@
 import { useContext } from "react"
 import { Link } from 'react-router-dom'
 import { XMarkIcon } from '@heroicons/react/24/solid'
-
 import { ShoppingCartContext } from "../../Context"
 import OrderCard from "../../componentes/OrderCard"
 import { totalPrice } from "../../utils"

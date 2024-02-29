@@ -1,4 +1,5 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
+import {  getData } from "../dataset"
 
 export const ShoppingCartContext = createContext()
 
@@ -24,9 +25,23 @@ export const ShoppingCartProvaider = ({children}) => {
   // shopping cart - agregar productos a cart
 
  const [cartProduct, setcartProduct ] = useState([])  
- 
+
+  
  // shopping cart - order
  const [order, setOrder ] = useState([])  
+
+
+ //Get product
+ const [items, setItems] = useState(null)
+
+  //Get product by title
+ const [searchByTitle, setSearchByTitle] = useState(null)
+ console.log("searchByTitle")
+
+ useEffect(() => {
+    const data = getData();
+    setItems(data)
+  }, [])
 
      return (
         <ShoppingCartContext.Provider value={{
@@ -43,7 +58,11 @@ export const ShoppingCartProvaider = ({children}) => {
             openCheckoutSideMenu,
             closeCheckoutSideMenu,
             order,
-            setOrder
+            setOrder,
+            items,
+            setItems,
+            searchByTitle,
+            setSearchByTitle
         }}>
             {children}
         </ShoppingCartContext.Provider>
