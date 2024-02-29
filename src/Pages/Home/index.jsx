@@ -22,9 +22,9 @@ function Home() {
           )
       }
     } else {
-      return Context.items?.map((item) => 
+      return (Context.items?.map((item) => 
         <Card key={item.id} data={item} />
-      )
+      ))
     }
   }
 
