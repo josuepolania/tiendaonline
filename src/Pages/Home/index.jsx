@@ -9,7 +9,7 @@ function Home() {
   const Context = useContext(ShoppingCartContext);
 
   const renderView = () => {
-    if (Context.searchByTitle?.length > 0) {
+   
       if (Context.filteredItems?.length > 0) {
         return (
           Context.filteredItems?.map((item) => (
@@ -21,11 +21,7 @@ function Home() {
             <div>The search yielded no results</div>
           )
       }
-    } else {
-      return (Context.items?.map((item) => 
-        <Card key={item.id} data={item} />
-      ))
-    }
+      
   }
 
 

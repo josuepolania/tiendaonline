@@ -11,39 +11,36 @@ import Navbar from "../../componentes/Navbar"
 import CheckoutSideMenu from "../../componentes/CheckoutSideMenu"
 import "./App.css"
 
-
-
 const AppRoutes = () => {
-  let routes = useRoutes ([
-    {path: "/home", element: <Home /> },
-    {path: "/Clouthes", element: <Home /> },
-    {path: "/Electronics", element: <Home /> },
-    {path: "/Furnitures", element: <Home /> },
-    {path: "/Toys", element: <Home /> },
-    {path: "/Others", element: <Home /> },
-    {path: "/my-orders", element: <MyOrders /> },
-    {path: "/my-orders/last", element: <MyOrder /> },
-    {path: "/my-orders/:id", element: <MyOrder /> },
-    {path: "/my-account", element: <MyAccount /> },
-    {path: "/my-order", element: <MyOrder /> },
-    {path: "/*", element: <NotFound /> },
-    {path: "/Sign-in", element: <Signin /> },
+  let routes = useRoutes([
+    { path: '/', element: <Home /> },
+    { path: '/clothes', element: <Home /> },
+    { path: '/electronics', element: <Home /> },
+    { path: '/furnitures', element: <Home /> },
+    { path: '/toys', element: <Home /> },
+    { path: '/othes', element: <Home /> },
+    { path: '/my-account', element: <MyAccount /> },
+    { path: '/my-order', element: <MyOrder /> },
+    { path: '/my-orders', element: <MyOrders /> },
+    { path: '/my-orders/last', element: <MyOrder /> },
+    { path: '/my-orders/:id', element: <MyOrder /> },
+    { path: '/sign-in', element: <signIn /> },
+    { path: '/*', element: <NotFound /> },
   ])
 
   return routes
 }
-
-
 const App = () => {
   return (
     <ShoppingCartProvaider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Navbar /> {/* Mover la barra de navegación aquí */}
+        <CheckoutSideMenu /> {/* Mover el menú lateral de pago aquí */}
         <AppRoutes />
-        <Navbar />
-        <CheckoutSideMenu />
       </BrowserRouter>
     </ShoppingCartProvaider>
   )
 }
+
 
 export default App

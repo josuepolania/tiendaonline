@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom"
 import { useContext } from "react"
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from "../../Context"
-import Home from "../../Pages/Home"
 
 
 
@@ -14,7 +13,9 @@ const Navbar = () => {
         <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
             <ul className="flex items-center gap-3">
                 <li className="font-semibold text-lg">
-                    <NavLink to="/Home">
+                    <NavLink to="/"
+                    onClick={() => Context.setSearchByCategory()}
+                    >
                     Shopi
                     </NavLink>
                 </li>
@@ -30,8 +31,8 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink
-                    to="/Clouthes"
-                    onClick={() => Context.setSearchByCategory("Clouthes")}
+                    to="/Clothes"
+                    onClick={() => Context.setSearchByCategory("clothes")}
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined 
                     }>
@@ -60,7 +61,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     <NavLink 
-                    to="/ Toys"
+                    to="/Toys"
                     onClick={() => Context.setSearchByCategory("toys")}
                      className={({ isActive }) =>
                      isActive ? activeStyle : undefined 
@@ -69,12 +70,12 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/Others"
-                    onClick={() => Context.setSearchByCategory("others")}
+                    <NavLink to="/Othes"
+                    onClick={() => Context.setSearchByCategory("othes")}
                      className={({ isActive }) =>
                      isActive ? activeStyle : undefined 
                      }>
-                    Others
+                    Othes
                     </NavLink>
                 </li>
             </ul>
