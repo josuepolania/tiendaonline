@@ -81,7 +81,7 @@ const Navbar = () => {
             </ul>
             <ul className="flex items-center gap-3 ">
                 <li className="text-black/60">
-                    jopa@platzi.com
+                    jopa@/.com
                 </li>
                 <li>
                     <NavLink to="/my-orders"
@@ -110,7 +110,7 @@ const Navbar = () => {
                 <li className=" flex items-center justify-center">
                     <ShoppingCartIcon className="h-6 w-6 text-black -500"></ShoppingCartIcon>
                     <div>
-                    {Context.count}
+                    {Context.cartProduct.length}
                     </div> 
                 </li>
             </ul>

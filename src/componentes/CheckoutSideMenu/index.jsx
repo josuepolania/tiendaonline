@@ -26,9 +26,8 @@ const CheckoutSideMenu = () => {
 
         Context.setOrder([...Context.order, orderToAdd])
         Context.setcartProduct([])
+        Context.setSearchByTitle(null)
     }
-
-
 
     return (
         <aside 
