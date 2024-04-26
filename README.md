@@ -2,6 +2,8 @@
 
 Este es el repositorio oficial de la tienda online, donde puedes encontrar información sobre nuestra plataforma de comercio electrónico y colaborar en su desarrollo.
 
+[Link APP](https://ecommerce-ligh.netlify.app/)
+
 ## Descripción
 
 Es una plataforma de comercio electrónico que ofrece una amplia gama de productos para nuestros clientes. Desde ropa y accesorios hasta electrónica y productos para el hogar, tenemos todo lo que necesitas.
