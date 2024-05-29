@@ -1,48 +1,77 @@
 import { createContext, useState, useEffect } from "react"
-import {  getData } from "../dataset"
+import { getData } from "../dataset"
 
 export const ShoppingCartContext = createContext()
 
-export const ShoppingCartProvaider = ({children}) => {
-     //shopping cart - increment quantify
-    const [count, setCount] = useState(0)
+//inicializamos el local storage
+
+export const inicializarLocalStorage = () => {
+  const accountInLocalStorage = localStorage.getItem('account')
+  const signOuntLocalStorage = localStorage.getItem('signOut')
+  let parsedAccount
+  let parsedSignOut
+
+  if (accountInLocalStorage) {
+    localStorage.setItem('account', JSON.stringify({}))
+    parsedAccount = {}
+  } else {
+    parsedAccount = JSON.parse(accountInLocalStorage)
+  }
+
+  if (signOuntLocalStorage) {
+    localStorage.setItem('signOut', JSON.stringify(false))
+    parsedSignOut = false
+  } else {
+    parsedSignOut = JSON.parse(signOuntLocalStorage)
+  }
+}
+
+export const ShoppingCartProvaider = ({ children }) => {
+  // My account - login
+  const [account, setAccount] = useState({})
+
+  // signOut
+  const [signOut, setSignOut] = useState(false)
+
+  //shopping cart - increment quantify
+  const [count, setCount] = useState(0)
 
 
-    //product Detail - open/clese
-    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
-    const openProductDetail = () => setIsProductDetailOpen(true)
-    const closeProductDetail = () => setIsProductDetailOpen(false)
+  //product Detail - open/clese
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
+  const openProductDetail = () => setIsProductDetailOpen(true)
+  const closeProductDetail = () => setIsProductDetailOpen(false)
 
-    //checkoutsidd-menu - 
-    const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
-    const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
-    const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
-    
-    //product Detail - show product
- const [productToShow, setProductToShow ] = useState({}) 
+  //checkoutsidd-menu - 
+  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
+
+  //product Detail - show product
+  const [productToShow, setProductToShow] = useState({})
 
 
   // shopping cart - agregar productos a cart
 
- const [cartProduct, setcartProduct ] = useState([])  
-
-  
- // shopping cart - order
- const [order, setOrder ] = useState([])  
+  const [cartProduct, setcartProduct] = useState([])
 
 
- //Get product
- const [items, setItems] = useState(null)
- const [filteredItems, setFilteredItems] = useState(null)
+  // shopping cart - order
+  const [order, setOrder] = useState([])
+
+
+  //Get product
+  const [items, setItems] = useState(null)
+  const [filteredItems, setFilteredItems] = useState(null)
 
 
   //Get product by title
- const [searchByTitle, setSearchByTitle] = useState(null)
+  const [searchByTitle, setSearchByTitle] = useState(null)
 
-   //Get product by Category
- const [searchByCategory, setSearchByCategory] = useState(null)
+  //Get product by Category
+  const [searchByCategory, setSearchByCategory] = useState(null)
 
- useEffect(() => {
+  useEffect(() => {
     const data = getData();
     setItems(data)
   }, [])
@@ -81,30 +110,34 @@ export const ShoppingCartProvaider = ({children}) => {
   }, [items, searchByTitle, searchByCategory])
 
   return (
-        <ShoppingCartContext.Provider value={{
-            count,
-            setCount,
-            openProductDetail,
-            closeProductDetail,
-            isProductDetailOpen,
-            productToShow,
-            setProductToShow,
-            cartProduct,
-            setcartProduct,
-            isCheckoutSideMenuOpen,
-            openCheckoutSideMenu,
-            closeCheckoutSideMenu,
-            order,
-            setOrder,
-            items,
-            setItems,
-            searchByTitle,
-            setSearchByTitle,
-            filteredItems,
-            searchByCategory,
-            setSearchByCategory
-        }}>
-            {children}
-        </ShoppingCartContext.Provider>
-    )
+    <ShoppingCartContext.Provider value={{
+      count,
+      setCount,
+      openProductDetail,
+      closeProductDetail,
+      isProductDetailOpen,
+      productToShow,
+      setProductToShow,
+      cartProduct,
+      setcartProduct,
+      isCheckoutSideMenuOpen,
+      openCheckoutSideMenu,
+      closeCheckoutSideMenu,
+      order,
+      setOrder,
+      items,
+      setItems,
+      searchByTitle,
+      setSearchByTitle,
+      filteredItems,
+      searchByCategory,
+      setSearchByCategory,
+      account,
+      setAccount,
+      signOut,
+      setSignOut
+    }}>
+      {children}
+    </ShoppingCartContext.Provider>
+  )
 }
