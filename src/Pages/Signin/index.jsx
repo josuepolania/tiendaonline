@@ -14,6 +14,7 @@ function Signin() {
   //Account
   const account = localStorage.getItem('account')
   const parsedAccount = JSON.parse(account)
+
   // has a ccount
   const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true
   const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0 : true
@@ -32,9 +33,9 @@ function Signin() {
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
-      password: parsedAccount?.password
+      password: formData.get('password')
     }
-    
+
     const stringifiedAccount = JSON.stringify(data)
     localStorage.setItem('account', stringifiedAccount)
     context.setAccount(data)
@@ -82,7 +83,7 @@ function Signin() {
         <div className="flex flex-col gap-1">
           <label htmlFor="name" className="font-light text-sm">your name:</label>
           <input
-            tyoe="text"
+            type="text"
             id="name"
             name="name"
             defaultValue={parsedAccount?.name}
@@ -102,18 +103,18 @@ function Signin() {
                 className="rounded-lg border border-black
                  placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4"
               />
-            <div>
-              <label htmlFor="password" className="font-light text-sm">password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                defaultValue={parsedAccount?.password}
-                placeholder="********"
-                className="rounded-lg border border-black
+              <div>
+                <label htmlFor="password" className="font-light text-sm">password:</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  defaultValue={parsedAccount?.password}
+                  placeholder="********"
+                  className="rounded-lg border border-black
                  placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4"
-              />
-            </div>
+                />
+              </div>
             </div>
             <Link to="/">
               <button
