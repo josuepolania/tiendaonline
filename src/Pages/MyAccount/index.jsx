@@ -1,7 +1,7 @@
 
 import { useContext, useState, useRef } from 'react'
 import { ShoppingCartContext } from '../../Context'
-import Layout from '../../Components/Layout'
+import Layout from '../../componentes/Layout'
 
 function MyAccount() {
   const context = useContext(ShoppingCartContext)
